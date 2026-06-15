@@ -1,0 +1,131 @@
+@import '../../styles/variables.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-navbar;
+  background: transparent;
+  transition: all $transition-normal;
+  padding: 1rem 0;
+
+  &--scrolled {
+    background: rgba($preto-premium, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba($verde-neon, 0.3);
+    padding: 0.5rem 0;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, $verde-neon, $azul-eletrico);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__logo-highlight {
+    color: $verde-neon;
+    -webkit-text-fill-color: $verde-neon;
+  }
+
+  &__mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: $branco;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: $z-modal;
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
+  }
+
+  &__nav {
+    @media (max-width: $mobile) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background: rgba($preto-premium, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 5rem 2rem;
+      transition: right $transition-normal;
+      z-index: $z-navbar;
+      border-left: 1px solid $verde-neon;
+
+      &--open {
+        right: 0;
+      }
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+
+  &__nav-item {
+    position: relative;
+  }
+
+  &__nav-link {
+    color: $branco;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color $transition-fast;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $verde-neon;
+      transition: width $transition-fast;
+    }
+
+    &:hover {
+      color: $verde-neon;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      color: $verde-neon;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
