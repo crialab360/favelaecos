@@ -1,0 +1,189 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin-top: 70px;
+}
+
+.route-transition-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.route-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.route-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.route-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: #39FF14;
+  color: #0A0A0A;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+.scroll-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.scroll-top:hover {
+  background: #00BFFF;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(57, 255, 20, 0.3);
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  border-top: 1px solid #39FF14;
+}
+.cookie-banner--visible {
+  transform: translateY(0);
+}
+.cookie-banner__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .cookie-banner__content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.cookie-banner__text {
+  color: #333333;
+  font-size: 0.9rem;
+}
+.cookie-banner__text a {
+  color: #39FF14;
+  text-decoration: underline;
+}
+.cookie-banner__text a:hover {
+  color: #00BFFF;
+}
+.cookie-banner__buttons {
+  display: flex;
+  gap: 1rem;
+}
+.cookie-banner__btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cookie-banner__btn--accept {
+  background: #39FF14;
+  color: #0A0A0A;
+}
+.cookie-banner__btn--accept:hover {
+  background: #00BFFF;
+  transform: scale(1.05);
+}
+.cookie-banner__btn--decline {
+  background: transparent;
+  color: #333333;
+  border: 1px solid #333333;
+}
+.cookie-banner__btn--decline:hover {
+  border-color: #39FF14;
+  color: #39FF14;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #39FF14;
+  color: #0A0A0A;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  z-index: 2000;
+  opacity: 0;
+  transition: all 0.5s ease;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .toast {
+    white-space: normal;
+    max-width: 90%;
+    text-align: center;
+  }
+}
+.toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.toast--error {
+  background: #ff4444;
+  color: white;
+}
+.toast--success {
+  background: #39FF14;
+  color: #0A0A0A;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-top: 60px;
+  }
+  .scroll-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}/*# sourceMappingURL=App.css.map */
