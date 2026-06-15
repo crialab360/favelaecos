@@ -1,0 +1,221 @@
+@import './styles/variables.scss';
+
+// Estilos principais do App
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Main content area (empurra o footer para baixo)
+main {
+  flex: 1;
+  margin-top: 70px; // Altura do header fixo
+}
+
+// Estilos de transição entre rotas
+.route-transition {
+  &-enter {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  
+  &-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity $transition-normal, transform $transition-normal;
+  }
+  
+  &-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  &-exit-active {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity $transition-normal, transform $transition-normal;
+  }
+}
+
+// Scroll to top button
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: $verde-neon;
+  color: $preto-premium;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all $transition-fast;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    background: $azul-eletrico;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba($verde-neon, 0.3);
+  }
+}
+
+// Cookie consent banner
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba($preto-premium, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform $transition-normal;
+  border-top: 1px solid $verde-neon;
+  
+  &--visible {
+    transform: translateY(0);
+  }
+  
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  
+  &__text {
+    color: $cinza-claro;
+    font-size: 0.9rem;
+    
+    a {
+      color: $verde-neon;
+      text-decoration: underline;
+      
+      &:hover {
+        color: $azul-eletrico;
+      }
+    }
+  }
+  
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  &__btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &--accept {
+      background: $verde-neon;
+      color: $preto-premium;
+      
+      &:hover {
+        background: $azul-eletrico;
+        transform: scale(1.05);
+      }
+    }
+    
+    &--decline {
+      background: transparent;
+      color: $cinza-claro;
+      border: 1px solid $cinza-claro;
+      
+      &:hover {
+        border-color: $verde-neon;
+        color: $verde-neon;
+      }
+    }
+  }
+}
+
+// Estilos para notificações toast
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: $verde-neon;
+  color: $preto-premium;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  z-index: 2000;
+  opacity: 0;
+  transition: all $transition-normal;
+  white-space: nowrap;
+  
+  @media (max-width: $mobile) {
+    white-space: normal;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  &--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  &--error {
+    background: #ff4444;
+    color: white;
+  }
+  
+  &--success {
+    background: $verde-neon;
+    color: $preto-premium;
+  }
+}
+
+// Responsividade global
+@media (max-width: $mobile) {
+  main {
+    margin-top: 60px;
+  }
+  
+  .scroll-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+// Animações de entrada para elementos
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity $transition-normal, transform $transition-normal;
+  
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

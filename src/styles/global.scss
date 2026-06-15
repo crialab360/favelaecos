@@ -1,0 +1,118 @@
+@import './variables.scss';
+@import './reset.scss';
+@import './animations.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $preto-premium;
+  color: $branco;
+  font-family: $font-family-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// Scrollbar personalizada
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $cinza-escuro;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $verde-neon;
+  border-radius: 4px;
+  
+  &:hover {
+    background: $azul-eletrico;
+  }
+}
+
+// Seleção de texto
+::selection {
+  background: $verde-neon;
+  color: $preto-premium;
+}
+
+// Container padrão
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+  
+  @media (max-width: $mobile) {
+    padding: 0 $spacing-md;
+  }
+}
+
+// Seções
+.section {
+  padding: $spacing-xxl * 2 0;
+  
+  @media (max-width: $mobile) {
+    padding: $spacing-xxl 0;
+  }
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: $spacing-xxl;
+  background: linear-gradient(135deg, $verde-neon, $azul-eletrico);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  @media (max-width: $mobile) {
+    font-size: 1.75rem;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Grid
+.grid {
+  display: grid;
+  gap: $spacing-xl;
+  
+  &--2 {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--4 {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: $desktop) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

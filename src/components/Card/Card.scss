@@ -1,0 +1,146 @@
+@import '../../styles/variables.scss';
+
+.card {
+  background: rgba($branco, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: all $transition-normal;
+  cursor: pointer;
+  border: 1px solid rgba($branco, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($branco, 0.1), transparent);
+    transition: left $transition-normal;
+  }
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &--green {
+    border-color: $verde-neon;
+    
+    &:hover {
+      border-color: $verde-neon;
+      box-shadow: 0 10px 30px rgba($verde-neon, 0.2);
+    }
+    
+    .card__title {
+      color: $verde-neon;
+    }
+  }
+
+  &--blue {
+    border-color: $azul-eletrico;
+    
+    &:hover {
+      box-shadow: 0 10px 30px rgba($azul-eletrico, 0.2);
+    }
+    
+    .card__title {
+      color: $azul-eletrico;
+    }
+  }
+
+  &--gold {
+    border-color: $dourado;
+    
+    &:hover {
+      box-shadow: 0 10px 30px rgba($dourado, 0.2);
+    }
+    
+    .card__title {
+      color: $dourado;
+    }
+  }
+
+  &--purple {
+    border-color: $roxo-neon;
+    
+    &:hover {
+      box-shadow: 0 10px 30px rgba($roxo-neon, 0.2);
+    }
+    
+    .card__title {
+      color: $roxo-neon;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: $verde-neon;
+    color: $preto-premium;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    color: $cinza-claro;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+
+  &__stat {
+    text-align: center;
+    flex: 1;
+  }
+
+  &__stat-number {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $verde-neon;
+  }
+
+  &__stat-label {
+    font-size: 0.75rem;
+    color: $cinza-claro;
+  }
+
+  &__link {
+    display: inline-block;
+    color: $verde-neon;
+    text-decoration: none;
+    transition: all $transition-fast;
+    margin-top: 1rem;
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+}

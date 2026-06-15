@@ -1,0 +1,231 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  background: linear-gradient(135deg, darken($preto-premium, 2%), $cinza-escuro);
+  border-top: 1px solid rgba($verde-neon, 0.3);
+  padding: 3rem 0 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $verde-neon, $azul-eletrico, transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__section {
+    h3, h4, h5 {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, $verde-neon, $azul-eletrico);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    color: $cinza-claro;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    color: $verde-neon;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__social-link {
+    color: $branco;
+    font-size: 1.5rem;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $verde-neon;
+      transform: translateY(-3px);
+    }
+  }
+
+  &__links {
+    list-style: none;
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  &__link {
+    color: $cinza-claro;
+    text-decoration: none;
+    transition: color $transition-fast;
+    position: relative;
+    padding-left: 1rem;
+
+    &::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      transition: opacity $transition-fast;
+    }
+
+    &:hover {
+      color: $verde-neon;
+      padding-left: 1.5rem;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__contact {
+    margin-bottom: 1.5rem;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: $cinza-claro;
+
+    a {
+      color: $cinza-claro;
+      text-decoration: none;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $verde-neon;
+      }
+    }
+  }
+
+  &__contact-icon {
+    color: $verde-neon;
+    font-size: 1.2rem;
+  }
+
+  &__newsletter {
+    margin-top: 1rem;
+  }
+
+  &__newsletter-title {
+    color: $branco;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__newsletter-input {
+    flex: 1;
+    padding: 0.5rem;
+    background: rgba($branco, 0.1);
+    border: 1px solid $cinza-claro;
+    border-radius: 5px;
+    color: $branco;
+    min-width: 150px;
+
+    &:focus {
+      outline: none;
+      border-color: $verde-neon;
+    }
+  }
+
+  &__newsletter-btn {
+    padding: 0.5rem 1rem;
+    background: $verde-neon;
+    color: $preto-premium;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all $transition-fast;
+    font-weight: bold;
+
+    &:hover {
+      background: $azul-eletrico;
+      transform: scale(1.05);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba($branco, 0.1);
+    color: $cinza-claro;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &__bottom-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    a {
+      color: $cinza-claro;
+      text-decoration: none;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: $verde-neon;
+      }
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
